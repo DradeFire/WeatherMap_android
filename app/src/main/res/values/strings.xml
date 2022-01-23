@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">WeatherMap</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_work_fine">All work fine!</string>
+    <string name="windSpeed">WindSpeed</string>
+    <string name="precipitation">Precipitation</string>
+    <string name="humidity">Humidity</string>
+    <string name="morning">Morning</string>
+    <string name="evening">Evening</string>
+    <string name="night">Night</string>
+    <string name="instruction">Инструкция</string>
+    <string name="pop_on_day">Прогноз на сегодня</string>
+    <string name="pop_on_week">Прогноз на неделю</string>
+    <string name="this_city">Текущий город</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startInfoFragment">
+
+    <fragment
+        android:id="@+id/todayTempFragment"
+        android:name="com.example.weathermap.fragments.TodayTempFragment"
+        android:label="@string/pop_on_day"
+        tools:layout="@layout/fragment_today_temp" >
+        <action
+            android:id="@+id/action_todayTempFragment_to_weekTempFragment"
+            app:destination="@id/weekTempFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weekTempFragment"
+        android:name="com.example.weathermap.fragments.WeekTempFragment"
+        android:label="@string/pop_on_week"
+        tools:layout="@layout/fragment_week_temp" >
+        <action
+            android:id="@+id/action_weekTempFragment_to_todayTempFragment"
+            app:destination="@id/todayTempFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startInfoFragment"
+        android:name="com.example.weathermap.fragments.StartInfoFragment"
+        android:label="@string/instruction"
+        tools:layout="@layout/fragment_start_info" >
+        <action
+            android:id="@+id/action_startInfoFragment_to_todayTempFragment"
+            app:destination="@id/todayTempFragment" />
+    </fragment>
+</navigation>
