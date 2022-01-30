@@ -135,15 +135,6 @@ class WeekTempFragment : Fragment() {
         viewModel.postWeather(coordinates.lat, coordinates.lon, Const.API_KEY_WEATHER)
     }
 
-//    private fun <T> MutableLiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
-//        observe(lifecycleOwner, object : Observer<T> {
-//            override fun onChanged(t: T?) {
-//                observer.onChanged(t)
-//                removeObserver(this)
-//            }
-//        })
-//    }
-
     private fun startUserTemp() {
         viewModel.getUserCoords(requireActivity())
         LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener { location ->
