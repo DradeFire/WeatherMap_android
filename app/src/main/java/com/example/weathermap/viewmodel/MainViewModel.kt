@@ -5,8 +5,8 @@ import android.app.Activity
 import android.util.Log
 import com.example.weathermap.consts.Const
 import com.example.weathermap.geo.Geo
-import com.example.weathermap.weather.json.model.BaseWeatherModel
-import com.example.weathermap.weather.json.send.SendWeather
+import com.example.weathermap.weatherdata.json.model.BaseWeatherModel
+import com.example.weathermap.weatherdata.json.send.SendWeather
 import com.example.weathermap.repository.Repository
 import kotlinx.coroutines.*
 import retrofit2.Response

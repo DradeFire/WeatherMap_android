@@ -1,4 +1,4 @@
-package com.example.weathermap.weather.json.model
+package com.example.weathermap.weatherdata.json.model
 
 data class WeekModel(
     val clouds: Int,

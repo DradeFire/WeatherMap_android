@@ -1,6 +1,6 @@
 package com.example.weathermap.api
 
-import com.example.weathermap.weather.json.model.BaseWeatherModel
+import com.example.weathermap.weatherdata.json.model.BaseWeatherModel
 import retrofit2.Response
 import retrofit2.http.POST
 import retrofit2.http.Query

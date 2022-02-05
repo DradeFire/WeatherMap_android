@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.*
-//import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weathermap.MainActivity
@@ -19,9 +18,9 @@ import com.example.weathermap.R
 import com.example.weathermap.consts.Const
 import com.example.weathermap.databinding.FragmentTodayTempBinding
 import com.example.weathermap.fragments.adapters.AdapterTodayHour
-import com.example.weathermap.geo.models.GeoCoordinates
+import com.example.weathermap.geo.data.models.GeoCoordinates
 import com.example.weathermap.viewmodel.MainViewModel
-import com.example.weathermap.weather.models.HourTempModel
+import com.example.weathermap.weatherdata.models.HourTempModel
 import com.google.android.gms.location.LocationServices
 import java.util.*
 import kotlin.math.roundToInt
@@ -40,7 +39,7 @@ class TodayTempFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (requireActivity() as MainActivity).title = this.getText(R.string.pop_on_day)
+//        (requireActivity() as MainActivity).title = this.getText(R.string.pop_on_day)
         binding = FragmentTodayTempBinding.inflate(inflater, container, false)
 
         startBind()
@@ -122,7 +121,7 @@ class TodayTempFragment : Fragment() {
     }
 
     private fun bindButtonsListener() = with(binding){
-        btChange.setOnClickListener {
+        btChangeOnWeek.setOnClickListener {
             findNavController().navigate(R.id.action_todayTempFragment_to_weekTempFragment)
         }
         btFindCity.setOnClickListener {

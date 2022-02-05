@@ -2,8 +2,8 @@ package com.example.weathermap
 
 import com.example.weathermap.consts.Const
 import com.example.weathermap.repository.Repository
-import com.example.weathermap.weather.json.model.BaseWeatherModel
-import com.example.weathermap.weather.json.send.SendWeather
+import com.example.weathermap.weatherdata.json.model.BaseWeatherModel
+import com.example.weathermap.weatherdata.json.send.SendWeather
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
@@ -23,9 +23,7 @@ class ExampleUnitTest {
         const val LAT = "55.75"
         const val LON = "37.61"
     }
-
-    private var dadata: DaDataClient = DaDataClientFactory
-        .getInstance(Const.API_KEY_COORD, Const.SECRET_KEY)
+    private lateinit var dadata: DaDataClient
     private var repository: Repository = Repository()
 
     @Nested
@@ -45,6 +43,8 @@ class ExampleUnitTest {
         @Test
         @Disabled
         fun test_rest_geo(){
+            dadata = DaDataClientFactory.getInstance(Const.API_KEY_COORD, Const.SECRET_KEY)
+
             runBlocking(Dispatchers.IO) {
                 try {
                     val response: Address = dadata.cleanAddress(CITY)

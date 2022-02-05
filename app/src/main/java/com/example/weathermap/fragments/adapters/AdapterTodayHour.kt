@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weathermap.databinding.ItemDayTempBinding
-import com.example.weathermap.weather.models.HourTempModel
+import com.example.weathermap.weatherdata.models.HourTempModel
 
 class AdapterTodayHour : RecyclerView.Adapter<AdapterTodayHour.ItemViewHolder>() {
 

@@ -18,7 +18,7 @@ class StartInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (requireActivity() as MainActivity).title = this.getText(R.string.instruction)
+        //(requireActivity() as MainActivity).title = this.getText(R.string.instruction)
         binding = FragmentStartInfoBinding.inflate(inflater, container, false)
 
         binding.btStartApp.setOnClickListener {

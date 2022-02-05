@@ -1,4 +1,4 @@
-package com.example.weathermap.weather.json.send
+package com.example.weathermap.weatherdata.json.send
 
 data class SendWeather(
     val lat: String,

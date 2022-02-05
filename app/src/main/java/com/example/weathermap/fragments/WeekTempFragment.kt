@@ -9,9 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
-//import androidx.lifecycle.LifecycleOwner
-//import androidx.lifecycle.MutableLiveData
-//import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,9 +17,9 @@ import com.example.weathermap.R
 import com.example.weathermap.consts.Const
 import com.example.weathermap.databinding.FragmentWeekTempBinding
 import com.example.weathermap.fragments.adapters.AdapterWeek
-import com.example.weathermap.geo.models.GeoCoordinates
+import com.example.weathermap.geo.data.models.GeoCoordinates
 import com.example.weathermap.viewmodel.MainViewModel
-import com.example.weathermap.weather.models.DayTempModel
+import com.example.weathermap.weatherdata.models.DayTempModel
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.util.*
@@ -43,7 +40,7 @@ class WeekTempFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (requireActivity() as MainActivity).title = this.getText(R.string.pop_on_week)
+//        (requireActivity() as MainActivity).title = this.getText(R.string.pop_on_week)
         binding = FragmentWeekTempBinding.inflate(inflater, container, false)
 
         startBind()

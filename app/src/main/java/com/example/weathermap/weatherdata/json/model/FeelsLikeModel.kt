@@ -1,4 +1,4 @@
-package com.example.weathermap.weather.json.model
+package com.example.weathermap.weatherdata.json.model
 
 data class FeelsLikeModel(
     val day: Double,

@@ -1,4 +1,4 @@
-package com.example.weathermap.geo.json
+package com.example.weathermap.geo.data.json
 
 data class Coord_testItem(
     val city_area: String,

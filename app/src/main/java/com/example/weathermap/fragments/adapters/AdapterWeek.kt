@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weathermap.R
 import com.example.weathermap.databinding.ItemWeekTempBinding
-import com.example.weathermap.weather.models.DayTempModel
+import com.example.weathermap.weatherdata.models.DayTempModel
 
 class AdapterWeek(private val context: Context)
     : RecyclerView.Adapter<AdapterWeek.ItemViewHolder>() {

@@ -1,4 +1,4 @@
-package com.example.weathermap.weather.models
+package com.example.weathermap.weatherdata.models
 
 data class HourTempModel (
     val temp: String = "",

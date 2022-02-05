@@ -1,4 +1,4 @@
-package com.example.weathermap.geo.json.model
+package com.example.weathermap.geo.data.json.model
 
 data class CordModelDataElement(
     val area: Any,
