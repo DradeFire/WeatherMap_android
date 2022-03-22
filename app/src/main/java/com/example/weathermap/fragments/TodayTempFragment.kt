@@ -13,7 +13,6 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.weathermap.MainActivity
 import com.example.weathermap.R
 import com.example.weathermap.consts.Const
 import com.example.weathermap.databinding.FragmentTodayTempBinding
@@ -49,12 +48,15 @@ class TodayTempFragment : Fragment() {
 
     private fun startBind() {
         bindButtonsListener()
-        startUserTemp()
+        if(viewModel.cityToSearch == null)
+            startUserTemp()
+        else
+            binding.inputCity.setText(viewModel.cityToSearch)
         bindObservers()
     }
 
     private fun bindObservers(){
-        viewModel.myResponseCord.observeForever { responseCoord ->
+        viewModel.myResponseCord.observe(viewLifecycleOwner) { responseCoord ->
             val coordClass = GeoCoordinates(
                 responseCoord.geoLat.toString(),
                 responseCoord.geoLon.toString()
@@ -64,7 +66,7 @@ class TodayTempFragment : Fragment() {
 
             setWeatherByCoordinates(coordClass)
         }
-        viewModel.myResponseWeather.observeForever { response ->
+        viewModel.myResponseWeather.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful) {
                 Log.d(Const.TAG_FOR_TESTING, "After lat: " + response.body()?.lat.toString())
                 Log.d(Const.TAG_FOR_TESTING, "After lon: " + response.body()?.lon.toString())
@@ -92,7 +94,7 @@ class TodayTempFragment : Fragment() {
                 val adapter = AdapterTodayHour()
                 binding.rcViewToday.adapter = adapter
                 binding.rcViewToday.layoutManager = LinearLayoutManager(
-                    requireContext(),
+                    requireActivity(),
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
@@ -126,10 +128,15 @@ class TodayTempFragment : Fragment() {
         }
         btFindCity.setOnClickListener {
             val nameSity = inputCity.text.toString()
-            if(nameSity.isNotEmpty())
+            if(nameSity.isNotEmpty()){
+                viewModel.cityToSearch = nameSity
                 setWeatherByCityName(nameSity)
-            else
+            }
+            else {
+                viewModel.cityToSearch = null
                 startUserTemp()
+            }
+
         }
     }
 
@@ -176,15 +183,15 @@ class TodayTempFragment : Fragment() {
 //    }
 
     private fun setNameSity(city: String) = with(binding){
-        if(city.isEmpty())
+        if(viewModel.cityToSearch == null)
             textCity.text = "Текущий город"
         else
-            textCity.text = city
+            textCity.text = viewModel.cityToSearch
     }
 
     @SuppressLint("SetTextI18n")
     private fun setTempToday(temp: String) = with(binding){
-        baseDayContainDay.textTemp.text = "$temp°C"
+        baseDayContainDay.textTemp.text = "%.1f".format(temp.toDouble()) + "°C"
     }
 
     @SuppressLint("SetTextI18n")

@@ -18,6 +18,8 @@ import androidx.lifecycle.*
 @SuppressLint("StaticFieldLeak")
 class MainViewModel: ViewModel(){
 
+    var cityToSearch: String? = null
+
     private val repository: Repository by lazy { Repository() }
     val myResponseCord: MutableLiveData<Address> = MutableLiveData()
     val myResponseWeather: MutableLiveData<Response<BaseWeatherModel>> = MutableLiveData()

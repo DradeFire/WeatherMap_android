@@ -18,20 +18,41 @@ class AdapterWeek(private val context: Context)
 
         @SuppressLint("SetTextI18n")
         fun bind(dayTempModel: DayTempModel, context: Context) {
-            binding.baseDayContWeek.textTemp.text = dayTempModel.temp_day
+            binding.baseDayContWeek.textTemp.text = "%.1f".format(dayTempModel.temp_day.substring(
+                0, dayTempModel.temp_day.length - 2
+            ).toDouble()
+            ) + dayTempModel.temp_day.substring(
+                dayTempModel.temp_day.length - 2
+            )
             binding.baseDayContWeek.textHumidity.text = context.getString(R.string.humidity) + ": ${dayTempModel.humidity}"
             binding.baseDayContWeek.textPrecipitation.text = context.getString(R.string.precipitation) + ": ${dayTempModel.precipitation}"
             binding.baseDayContWeek.textWindSpeed.text = context.getString(R.string.windSpeed) + ": ${dayTempModel.windSpeed}"
             binding.baseDayContWeek.textToday.text = dayTempModel.dayOfWeek
 
             binding.weekDayElMorn.textItemHourTime.text = context.getString(R.string.morning)
-            binding.weekDayElMorn.textItemHourTemp.text = dayTempModel.temp_morn
+            binding.weekDayElMorn.textItemHourTemp.text = "%.1f".format(dayTempModel.temp_morn.substring(
+                        0, dayTempModel.temp_morn.length - 2
+                    ).toDouble()
+                ) + dayTempModel.temp_morn.substring(
+                dayTempModel.temp_morn.length - 2
+            )
+
 
             binding.weekDayElEve.textItemHourTime.text = context.getString(R.string.evening)
-            binding.weekDayElEve.textItemHourTemp.text = dayTempModel.temp_eve
+            binding.weekDayElEve.textItemHourTemp.text = "%.1f".format(dayTempModel.temp_eve.substring(
+                         0, dayTempModel.temp_eve.length - 2
+                    ).toDouble()
+                ) + dayTempModel.temp_eve.substring(
+                dayTempModel.temp_eve.length - 2
+            )
 
             binding.weekDayElNight.textItemHourTime.text = context.getString(R.string.night)
-            binding.weekDayElNight.textItemHourTemp.text = dayTempModel.temp_night
+            binding.weekDayElNight.textItemHourTemp.text = "%.1f".format(dayTempModel.temp_night.substring(
+                        0, dayTempModel.temp_night.length - 2
+                    ).toDouble()
+                ) + dayTempModel.temp_night.substring(
+                dayTempModel.temp_night.length - 2
+            )
         }
     }
 

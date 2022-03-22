@@ -12,7 +12,6 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.weathermap.MainActivity
 import com.example.weathermap.R
 import com.example.weathermap.consts.Const
 import com.example.weathermap.databinding.FragmentWeekTempBinding
@@ -50,12 +49,15 @@ class WeekTempFragment : Fragment() {
 
     private fun startBind() {
         bindButtonsListener()
-        startUserTemp()
+        if(viewModel.cityToSearch == null)
+            startUserTemp()
+        else
+            binding.inputCity.setText(viewModel.cityToSearch)
         bindObservers()
     }
 
     private fun bindObservers(){
-        viewModel.myResponseCord.observeForever{ responseCoord ->
+        viewModel.myResponseCord.observe(viewLifecycleOwner){ responseCoord ->
             val coordClass = GeoCoordinates(
                 responseCoord.geoLat.toString(),
                 responseCoord.geoLon.toString()
@@ -63,7 +65,7 @@ class WeekTempFragment : Fragment() {
 
             setWeatherByCoordinates(coordClass)
         }
-        viewModel.myResponseWeather.observeForever{ response ->
+        viewModel.myResponseWeather.observe(viewLifecycleOwner){ response ->
             if(response.isSuccessful) {
 
                 Log.d(Const.TAG_FOR_TESTING,"After lat: " + viewModel.myResponseWeather.value?.body()?.lat /*response.body()?.lat.toString()*/)
@@ -116,10 +118,15 @@ class WeekTempFragment : Fragment() {
 
         btFindCity.setOnClickListener {
             val nameSity = inputCity.text.toString()
-            if(nameSity.isNotEmpty())
+            if(nameSity.isNotEmpty()){
+                viewModel.cityToSearch = nameSity
                 setWeatherByCityName(nameSity)
-            else
+            }
+            else{
+                viewModel.cityToSearch = null
                 startUserTemp()
+            }
+
         }
     }
 
@@ -157,10 +164,10 @@ class WeekTempFragment : Fragment() {
     }
 
     private fun setNameSity(city: String) = with(binding){
-        if(city.isEmpty())
+        if(viewModel.cityToSearch == null)
             textCityWeek.text = getString(R.string.this_city)
         else
-            textCityWeek.text = city
+            textCityWeek.text = viewModel.cityToSearch
     }
 
 }
